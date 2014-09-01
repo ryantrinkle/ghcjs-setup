@@ -36,7 +36,7 @@ $ ghcjs --version
 The Glorious Glasgow Haskell Compilation System for JavaScript, version 0.1.0 (GHC 7.8.3)
 
 To build a basic program with ghcjs, do:
-$ echo 'main = putStrLn "Hello, world!"' > helloWorld.hs
+$ echo 'main = putStrLn \"Hello, world!\"' > helloWorld.hs
 $ ghcjs helloWorld.hs
 $ node helloWorld.jsexe/all.js
 EOF
