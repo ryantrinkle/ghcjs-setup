@@ -31,9 +31,12 @@ fi
 
 INFO=$(cat <<"EOF"
 
-You are now in a shell with access to ghcjs.  You can verify that ghcjs is configured correctly with:
+You are now in a shell with access to ghcjs and cabal-js.  You can verify that ghcjs is configured correctly with:
 $ ghcjs --version
 The Glorious Glasgow Haskell Compilation System for JavaScript, version 0.1.0 (GHC 7.8.3)
+
+$ cabal-js install --help | grep ghcjs
+--ghcjs                         compile with GHCJS
 
 To build a basic program with ghcjs, do:
 $ echo 'main = putStrLn \"Hello, world!\"' > helloWorld.hs
@@ -43,4 +46,4 @@ EOF
 )
 
 echo "Entering the ghcjs/nodejs sandbox; this may take several hours the first time you run it"
-nix-shell -I . -p haskellPackages_ghcjs.ghc nodejs --command "echo \"$INFO\" ; return"
+nix-shell -I . -p haskellPackages_ghcjs.ghc haskellPackages.cabalInstallGhcjs nodejs --command "echo \"$INFO\" ; return"
