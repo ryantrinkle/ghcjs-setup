@@ -46,4 +46,4 @@ EOF
 )
 
 echo "Entering the ghcjs/nodejs sandbox; this may take several hours the first time you run it"
-nix-shell -I . -p haskellPackages_ghcjs.ghc haskellPackages.cabalInstallGhcjs nodejs --command "echo \"$INFO\" ; return"
+nix-shell -I . -p haskellPackages_ghcjs.ghc haskellPackages_ghcjs.ghc.ghc.parent.cabalInstallGhcjs nodejs --command "echo \"$INFO\" ; return"
