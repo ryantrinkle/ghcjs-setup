@@ -29,7 +29,7 @@ for x in nixpkgs ; do
     fi
 
     echo "Getting ghcjs build scripts"
-    git submodule init "$x"
+    git submodule update --init "$x"
   fi
 done
 
