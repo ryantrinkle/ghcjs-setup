@@ -47,4 +47,4 @@ EOF
 )
 
 echo "Entering the ghcjs/nodejs sandbox; this may take several hours the first time you run it"
-nix-shell -I . -p haskell-ng.packages.ghcjs.ghc nodejs --command "echo \"$INFO\" ; return"
+nix-shell -I . --option extra-binary-caches https://ryantrinkle.com:5443/ -p haskell-ng.packages.ghcjs.ghc nodejs --command "echo \"$INFO\" ; return"
