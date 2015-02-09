@@ -35,12 +35,9 @@ done
 
 INFO=$(cat <<"EOF"
 
-You are now in a shell with access to ghcjs and cabal-js.  You can verify that ghcjs is configured correctly with:
+You are now in a shell with access to ghcjs.  You can verify that ghcjs is configured correctly with:
 $ ghcjs --version
 The Glorious Glasgow Haskell Compilation System for JavaScript, version 0.1.0 (GHC 7.8.3)
-
-$ cabal-js install --help | grep ghcjs
---ghcjs                         compile with GHCJS
 
 To build a basic program with ghcjs, do:
 $ echo 'main = putStrLn \"Hello, world!\"' > helloWorld.hs
