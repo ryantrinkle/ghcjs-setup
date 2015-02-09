@@ -22,7 +22,7 @@ fi
 
 
 for x in nixpkgs ; do
-  if [ ! -d "$x" ] ; then
+  if [ ! "$(ls -A "$x")" ] ; then
     if ! type -P git ; then
       echo "Please make sure that 'git' is installed and can be run from this shell"
       exit 1
