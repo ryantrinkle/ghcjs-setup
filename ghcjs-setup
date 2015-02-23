@@ -3,6 +3,10 @@ set -eu
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+(
+
+cd "$DIR"
+
 trap "echo 'It looks like a problem occurred.  Please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues'; exit 1" ERR
 
 echo "If you have any trouble with this script, please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues"
@@ -14,7 +18,7 @@ if [ ! -d /nix ] ; then
   fi
 
   echo "Installing Nix"
-  "$DIR"/installNix.sh
+  ./installNix.sh
 fi
 
 if ! type -P nix-shell ; then
@@ -34,6 +38,8 @@ for x in nixpkgs ; do
     git submodule update --init "$x"
   fi
 done
+
+)
 
 INFO=$(cat <<"EOF"
 
