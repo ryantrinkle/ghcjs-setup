@@ -5,9 +5,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 REPO="https://github.com/ryantrinkle/ghcjs-setup"
 
-trap "echo 'It looks like a problem occurred.  Please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues'; exit 1" ERR
-
-echo "If you have any trouble with this script, please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues"
+trap "echo 'It looks like a problem occurred.  Please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues and we'\\''ll look into it right away'; exit 1" ERR
 
 echo "If you have any trouble with this script, please submit an issue at $REPO/issues"
 
