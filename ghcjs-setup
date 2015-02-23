@@ -21,11 +21,15 @@ if [ ! -d /nix ] ; then
   ./installNix.sh
 fi
 
+)
+
 if ! type -P nix-shell ; then
   . ~/.nix-profile/etc/profile.d/nix.sh
 fi
 
+(
 
+cd "$DIR"
 
 for x in nixpkgs ; do
   if [ ! "$(ls -A "$x")" ] ; then
