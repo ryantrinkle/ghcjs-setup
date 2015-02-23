@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -eu
 
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 trap "echo 'It looks like a problem occurred.  Please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues'; exit 1" ERR
 
 echo "If you have any trouble with this script, please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues"
@@ -12,7 +14,7 @@ if [ ! -d /nix ] ; then
   fi
 
   echo "Installing Nix"
-  bash <(curl https://nixos.org/nix/install)
+  "$DIR"/installNix.sh
 fi
 
 if ! type -P nix-shell ; then
@@ -47,4 +49,4 @@ EOF
 )
 
 echo "Entering the ghcjs/nodejs sandbox; this may take several hours the first time you run it"
-nix-shell -I . --option extra-binary-caches https://ryantrinkle.com:5443/ -p haskell-ng.packages.ghcjs.ghc nodejs --command "echo \"$INFO\" ; return"
+nix-shell -I "$DIR" --option extra-binary-caches https://ryantrinkle.com:5443/ -p haskell-ng.packages.ghcjs.ghc nodejs --command "echo \"$INFO\" ; return"
