@@ -3,16 +3,20 @@ set -eu
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-(
-
-cd "$DIR"
+REPO="https://github.com/ryantrinkle/ghcjs-setup"
 
 trap "echo 'It looks like a problem occurred.  Please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues'; exit 1" ERR
 
 echo "If you have any trouble with this script, please submit an issue at https://github.com/ryantrinkle/ghcjs-setup/issues"
 
+echo "If you have any trouble with this script, please submit an issue at $REPO/issues"
+
+(
+
+cd "$DIR"
+
 if [ ! -d /nix ] ; then
-  if ! type -P curl ; then
+  if ! type -P curl >/dev/null ; then
     echo "Please make sure that 'curl' is installed and can be run from this shell"
     exit 1
   fi
@@ -23,20 +27,26 @@ fi
 
 )
 
-if ! type -P nix-shell ; then
+if ! type -P nix-shell >/dev/null ; then
   . ~/.nix-profile/etc/profile.d/nix.sh
+  if ! type -P nix-shell >/dev/null ; then
+    echo "It looks like Nix isn't working.  Please make sure you can run nix-shell, then retry the $0, or submit an issue at $REPO/issues"
+    exit 1
+  fi
 fi
 
 (
 
 cd "$DIR"
 
-for x in nixpkgs ; do
+
+if ! type -P git ; then
+  echo "Please make sure that 'git' is installed and can be run from this shell"
+  exit 1
+fi
+
+for x in $(git submodule --quiet foreach 'echo $path') ; do
   if [ ! "$(ls -A "$x")" ] ; then
-    if ! type -P git ; then
-      echo "Please make sure that 'git' is installed and can be run from this shell"
-      exit 1
-    fi
 
     echo "Getting ghcjs build scripts"
     git submodule update --init "$x"
