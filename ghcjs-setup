@@ -43,11 +43,11 @@ if ! type -P git ; then
   exit 1
 fi
 
-for x in $(git submodule --quiet foreach 'echo $path') ; do
+for x in nixpkgs ; do
   if [ ! "$(ls -A "$x")" ] ; then
 
     echo "Getting ghcjs build scripts"
-    git submodule update --init "$x"
+    git submodule update --init --recursive "$x"
   fi
 done
 
