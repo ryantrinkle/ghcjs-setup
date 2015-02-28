@@ -9,5 +9,6 @@ in this.nixpkgs.runCommand "shell" {
   '';
   buildInputs = [
     this.nixpkgs.nodejs
+    this.nixpkgs.haskell-ng.packages.ghc7101.cabal-install
   ] ++ builtins.map myEnv this.platforms;
 } ""
