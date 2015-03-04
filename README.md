@@ -1,6 +1,15 @@
 ghcjs-setup
 ===========
 
+## NixOS users only:
+
+Add https://ryantrinkle.com:5443 to trustedBinaryCaches in your /etc/nixos/configuration.nix
+
+```bash
+sudo nixos-rebuild switch
+```
+## Everyone:
+
 ```bash
 git clone https://github.com/ryantrinkle/ghcjs-setup
 cd ghcjs-setup
