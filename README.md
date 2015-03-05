@@ -25,4 +25,4 @@ When using Nix on NixOS, only root can add binary caches to the system.  This wi
 
 If you already have a trustedBinaryCaches option set up, just add `https://ryantrinkle.com:5443/` to the existing list.
 
-Once it's been added, run `sudo -i nixos-rebuild switch` to make it take effect.
+Once it's been added, run `sudo -i nixos-rebuild switch` to make the change take effect, then run ghcjs-setup as normal.
