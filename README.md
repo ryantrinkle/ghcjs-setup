@@ -19,7 +19,7 @@ You will need sudo access in order to install Nix (unless you are on NixOS).  Ho
 
 When using Nix on NixOS, only root can add binary caches to the system.  This will force ghcjs-setup to rebuild GHCJS from scratch, which takes hours.  To enable the binary cache, you can add the following line to your `/etc/nixos/configuration.nix`:
 
-```nix
+```
   nix.trustedBinaryCaches = [ "https://ryantrinkle.com:5443" ];
 ```
 
