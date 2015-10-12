@@ -1,3 +1,8 @@
+IMPORTANT
+=========
+
+This package is now obsolete.  It has been superceded by [try-reflex](https://github.com/ryantrinkle/try-reflex).
+
 ghcjs-setup
 ===========
 
